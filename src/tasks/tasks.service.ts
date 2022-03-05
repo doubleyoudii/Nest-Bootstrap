@@ -74,15 +74,9 @@ export class TasksService {
 
   updateTask(id: string, body: UpdateTaskDto): Task {
     const { status } = body;
-    const toBeupdated = this.tasks.findIndex((task) => task.id === id);
-    if (toBeupdated === -1) {
-      throw new Error('Cant find task with that ID');
-    }
-    this.tasks[toBeupdated].status = TaskStatus[`${TaskStatus[status]}`];
-    // console.log(TaskStatus[`${TaskStatus[status]}`]);
-    // console.log(status);
-    // console.log(TaskStatus[status]);
-    return this.tasks[toBeupdated];
+    const found = this.getTaskById(id);
+    found.status = status;
+    return found;
   }
 
   deleteTaskById(id: string): Task {
