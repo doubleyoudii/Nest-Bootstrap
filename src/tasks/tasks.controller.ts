@@ -26,7 +26,7 @@ export class TasksController {
     private configService: ConfigService,
     private tasksService: TasksService,
   ) {
-    console.log(configService.get('CURRENT_STAGE'));
+    // console.log(configService.get('CURRENT_STAGE'));
   }
 
   @Get()
